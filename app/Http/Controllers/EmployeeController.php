@@ -133,6 +133,24 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         //
+        // return $employee;
+        $page_name = "Employee";
+        $page_subpage = "update";
+        $page_icon ="fa fa-user-edit";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+            }
+        }
+
+    //    $employee=Employee::find($employee->$id);
+       $documentType = DocumentType::all();
+       $workstation = Workstation::all();
+    //    return $documentType;
+       return view('employee.edit',compact("user", "employee", "workstation","documentType","page_name","page_subpage", "page_icon"));
+    //    return view('employee.edit',compact('employee','em', 'documentType', 'workstation'));
     }
 
     /**
@@ -145,6 +163,9 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         //
+        //
+        Employee::find($employee->id)->update($request->all());
+        return redirect()->route('employee');
     }
 
     /**
@@ -156,5 +177,7 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         //
+        Employee::find($employee->id)->delete();
+        return redirect()->route('employee');
     }
 }

@@ -42,9 +42,9 @@
                     <a class="mr-2" href="/login">
                         <h6 class="text-white text-uppercase">{{__('Login')}}</h6>
                     </a>
-                    <a class="ml-2" href="/register">
+                    {{-- <a class="ml-2" href="/register">
                         <h6 class="text-white text-uppercase">{{__('REGISTER')}}</h6>
-                    </a>
+                    </a> --}}
                 </div>
                 @endguest
 

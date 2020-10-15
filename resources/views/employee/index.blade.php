@@ -28,8 +28,8 @@
 		                      		<td>{{$element->user->name}}</td>
 		                      		<td>
 		                      			
-		                      			<a style="display: inline-flex;" class="btn btn-success flex-wrap align-content-center justify-content-center " href="#"><i class="fa fa-edit"></i></a>
-		                      			<a style="display: inline-flex;" class="btn btn-danger flex-wrap align-content-center justify-content-center" href="#"><i class="fa fa-trash"></i></a>
+		                      			<a style="display: inline-flex;" class="btn btn-success flex-wrap align-content-center justify-content-center " href="{{route('employee.edit', $element)}}"><i class="fa fa-edit"></i></a>
+		                      			<a style="display: inline-flex;" class="btn btn-danger flex-wrap align-content-center justify-content-center"  href="{{route('employee.destroy', $element)}}"><i class="fa fa-trash"></i></a>
 
 		                      		</td>
 		                    	</tr>

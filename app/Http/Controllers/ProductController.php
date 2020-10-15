@@ -109,6 +109,23 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        $page_name = "Product";
+        $page_subpage = "update";
+        $page_icon ="fa fa-boxes";
+        $auth = Auth::user();
+        $employees = Employee::all();
+        foreach ($employees as $key) {
+            if ($key->id == $auth->employee_id) {
+                $user = $key;
+
+            }
+        }
+
+       
+        $categories = ProductCategory::all();
+        $brands = Brand::all();
+
+        return view('product.edit',compact("user", "product","categories","brands","page_name","page_subpage", "page_icon"));
     }
 
     /**
@@ -121,6 +138,9 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+
+        Product::find($product->id)->update($request->all());
+        return redirect()->route('product');
     }
 
     /**
@@ -131,6 +151,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+                //
+                Product::find($product->id)->delete();
+                return redirect()->route('product');
     }
 }

@@ -219,9 +219,9 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a class="treeview-item" href="{{--route('client')--}}"><i class="icon fas fa-user-tie"></i>
+                        {{-- <a class="treeview-item" href="{{--route('client')"><i class="icon fas fa-user-tie"></i>
                             {{__('Clients')}}
-                        </a>
+                        </a> --}}
                         <a class="treeview-item" href="{{route('sale')}}"><i class="icon fab fa-shopify"></i>
                             {{__('Make sale')}}
                         </a>
@@ -268,9 +268,9 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a class="treeview-item" href="#"><i class=" icon fas fa-clipboard-list"></i>
+                        {{-- <a class="treeview-item" href="#"><i class=" icon fas fa-clipboard-list"></i>
                             {{__('Category')}}
-                        </a>
+                        </a> --}}
                         <a class="treeview-item" href="{{route('product')}}"><i class="icon fas fa-boxes"></i>
                             {{__('Product')}}
                         </a>

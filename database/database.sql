@@ -192,5 +192,34 @@ SELECT MONTHNAME(date) AS month, COUNT(*) AS quantity FROM sales WHERE sales.use
 
 
 CREATE PROCEDURE total_monthly_sales () 
-SELECT MONTHNAME(date) AS month, COUNT(*) AS quantity FROM sales GROUP BY(MONTH(date))
+SELECT MONTHNAME(date) AS month, COUNT(*) AS quantity FROM sales GROUP BY(MONTH(date));
+
+ALTER TABLE clients DROP FOREIGN KEY clients_ibfk_1;
+ALTER TABLE clients ADD CONSTRAINT clients_ibfk_1 FOREIGN KEY (document_type_id) REFERENCES document_types(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE employees DROP FOREIGN KEY employees_ibfk_1; 
+ALTER TABLE employees ADD CONSTRAINT employees_ibfk_1 FOREIGN KEY (document_type_id) REFERENCES document_types(id) ON DELETE CASCADE ON UPDATE CASCADE; 
+ALTER TABLE employees DROP FOREIGN KEY employees_ibfk_2; 
+ALTER TABLE employees ADD CONSTRAINT employees_ibfk_2 FOREIGN KEY (workstation_id) REFERENCES workstations(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE products DROP FOREIGN KEY products_ibfk_1; 
+ALTER TABLE products ADD CONSTRAINT products_ibfk_1 FOREIGN KEY (brand_id) REFERENCES brands(id) ON DELETE CASCADE ON UPDATE CASCADE; 
+ALTER TABLE products DROP FOREIGN KEY products_ibfk_2; 
+ALTER TABLE products ADD CONSTRAINT products_ibfk_2 FOREIGN KEY (product_categories_id) REFERENCES product_categories(id) ON DELETE CASCADE ON UPDATE CASCADE; 
+
+ALTER TABLE sales DROP FOREIGN KEY sales_ibfk_1; 
+ALTER TABLE sales ADD CONSTRAINT sales_ibfk_1 FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE sales DROP FOREIGN KEY sales_ibfk_2; 
+ALTER TABLE sales ADD CONSTRAINT sales_ibfk_2 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE sales DROP FOREIGN KEY sales_ibfk_3;
+ALTER TABLE sales ADD CONSTRAINT sales_ibfk_3 FOREIGN KEY (voucher_type_id) REFERENCES voucher_types(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE sale_details DROP FOREIGN KEY sale_details_ibfk_1; 
+ALTER TABLE sale_details ADD CONSTRAINT sale_details_ibfk_1 FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE sale_details DROP FOREIGN KEY sale_details_ibfk_2;
+ALTER TABLE sale_details ADD CONSTRAINT sale_details_ibfk_2 FOREIGN KEY (sale_id) REFERENCES sales(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE users DROP FOREIGN KEY users_ibfk_1; 
+ALTER TABLE users ADD CONSTRAINT users_ibfk_1 FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE ON UPDATE CASCADE; 
 

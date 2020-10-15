@@ -36,10 +36,10 @@
                                 <td>{{ $product->unit_price}}</td>
                                 <td>{{ $product->stock}}</td>
                                 <td>
-                                    <a class="btn btn-success" href="{{--route('product.edit', $product)--}}">
+                                    <a class="btn btn-success" href="{{route('product.edit', $product)}}">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form style="display: inline;" action="{{--route('product.destroy', $product)--}}" method="POST">
+                                    <form style="display: inline;" action="{{route('product.destroy', $product)}}" method="POST">
                                         @csrf
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button type="submit" value="" class="btn btn-danger"><i class="fas fa-trash"></i></button>

@@ -14,7 +14,7 @@ class DocumentType extends Model
      *
      * @var array
      */
-    protected $fillable = ['document'];
+    protected $fillable = [ 'id', 'document'];
 
     public function employees(){
 
