@@ -96,7 +96,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-3">
                                 <button class="btn btn-success" type="submit">
-                                    <i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                                    <i class="fa fa-fw fa-lg fa-check-circle"></i>Update</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="/employee"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
                             </div>
                         </div>
                     </div>

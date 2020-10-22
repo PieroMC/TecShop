@@ -80,7 +80,7 @@
                             <div class="col-md-8 col-md-offset-3">
                                 <button class="btn btn-success" type="submit">
                                     <i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<a
-                                    class="btn btn-danger" href="#"><i
+                                    class="btn btn-danger" href="/products"><i
                                         class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
                             </div>
                         </div>

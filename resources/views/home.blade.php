@@ -2,27 +2,17 @@
 
 @section('content')
 <div class="row d-flex justify-content-center">
-   
+
     <div class="col-md-10">
         <div class="tile">
-            <h3 class="tile-title">Monthly Sales</h3>
+            <h3 class="tile-title">{{$type_data}}</h3>
             <div class="embed-responsive embed-responsive-16by9">
                 <canvas class="embed-responsive-item" id="Monthly_Sales"></canvas>
             </div>
         </div>
     </div>
 
-    <div class="col-md-10">
-        <div class="tile">
-            <h3 class="tile-title">Bar Chart</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-                <canvas class="embed-responsive-item" id="barChartDemo"></canvas>
-            </div>
-        </div>
-    </div>
-    <div>
 
-    </div>
     <form action="" method="post" id="form-request">
         @csrf
         <input type="hidden" name="id" value="{{$user->id}}">
@@ -35,66 +25,66 @@
 <script src="/js/chart/dashboard.js"></script>
 <script type="text/javascript">
 
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    function monthlySales(ctx) {
+        function monthlySales(ctx) {
 
-        new Chart(ctx, 
-        {
-             type: 'line',
-            data: {
+            new Chart(ctx,
+                {
+                    type: 'line',
+                    data: {
 
-                labels: [
+                        labels: [
                     @foreach($data as $item)
-                        "{{$item->month}}",
+            "{{$item->month}}",
                     @endforeach
                 ],
-                datasets: [{
+            datasets: [{
 
-                    label: 'Sales',
-                    data: [
+                label: 'Sales',
+                data: [
                         @foreach($data as $item)
-                            "{{$item->quantity}}",
+            "{{$item->quantity}}",
                         @endforeach
                     ],
-                    borderColor: 'green',
+            borderColor: 'green',
                 }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        gridLines: {
-                            display: false,
-                        }
-                    }]
-                 },
-                legend: {
-                    position: 'bottom',
-                    labels: {
-                        padding: 20,
-                        boxWidth: 25,
-                        fontColor: 'black'
-                    }
-                 },
-                tooltips: {
-                    backgroundColor: '#26518C',
-                    xPadding: 10,
-                    yPadding: 10
-                },
-                elements: {
-                    line: {
-                        borderWidth: 4,
-                        fill: false,
-                    },
-                    point: {
-                        radius: 4,
-                        borderWidth: 2,
-                        backgroundColor: 'white',
-                        hoverRadius: 6,
-                        hoverBorderWidth: 2,
-                    }
+    },
+        options: {
+        scales: {
+            xAxes: [{
+                gridLines: {
+                    display: false,
                 }
+            }]
+        },
+        legend: {
+            position: 'bottom',
+            labels: {
+                padding: 20,
+                boxWidth: 25,
+                fontColor: 'black'
             }
+        },
+        tooltips: {
+            backgroundColor: '#26518C',
+            xPadding: 10,
+            yPadding: 10
+        },
+        elements: {
+            line: {
+                borderWidth: 4,
+                fill: false,
+            },
+            point: {
+                radius: 4,
+                borderWidth: 2,
+                backgroundColor: 'white',
+                hoverRadius: 6,
+                hoverBorderWidth: 2,
+            }
+        }
+    }
         })
     }
     function renderChart() {

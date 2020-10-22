@@ -38,15 +38,19 @@ class HomeController extends Controller
             }
         }
         $id = $auth->id;
-
+        $type_data;
         if(User::find($id)->employee->workstation->work == "ADMINISTRATOR"){
+            $type_data = "All monthly sales";
             $data = DB::select('CALL total_monthly_sales()');
+
         }else{
+            $type_data = "All my monthly sales";
             $data = DB::select('CALL monthly_sales('.$id.')');
+
         }
 
         
-        return view('home', compact("user", "data", "page_name","page_subpage", "page_icon"));
+        return view('home', compact("user", "data", "type_data","page_name","page_subpage", "page_icon"));
     }
 
     // public function chart(Request $request)

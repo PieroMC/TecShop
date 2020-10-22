@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Employee;
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Models\DocumentType;
+use App\Models\Workstation;
+use Auth;
 class RegisterController extends Controller
 {
     /*
@@ -39,6 +44,42 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+
+    public function showRegistrationForm()
+    {
+        $document_type = DocumentType::all();
+        $workstation = Workstation::all();
+        return view('auth.register',compact("workstation","document_type"));
+    }
+
+
+    public function Register(Request $request)
+    {
+        $employee = Employee::create([
+
+            'name' => $request->name, 
+            'lastname' => $request->lastname, 
+            'document_type_id' => $request->document_type_id, 
+            'number_document' => $request->number_document, 
+            'date_birth' => $request->date_birth, 
+            'email' => $request->email,
+            'telephone' => $request->telephone, 
+            'address' => $request->address,
+            'workstation_id' => $request->workstation_id,
+
+        ]);
+
+        $user = User::create([
+            'name' => $request->username,
+            'password' => Hash::make($request->password),
+            'employee_id' => $employee->id,
+        ]);
+
+        Auth::login($user);
+
+        return redirect()->route('home');
     }
 
     /**

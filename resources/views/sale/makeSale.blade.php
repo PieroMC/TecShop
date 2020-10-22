@@ -58,7 +58,7 @@
                             <div class="form-group">
                                 <label class="d-flex flex-wrap align-content-center"
                                     for="quantiy">{{__('Quantiy')}}</label>
-                                <input class="form-control" type="text" id="quantity" placeholder="number">
+                                <input class="form-control" type="text" id="quantity" value="0" placeholder="number">
                                 <p id="error" class="text-danger font-weight-bold d-none">required</p>
                             </div>
                         </div>
@@ -151,8 +151,9 @@
     }
 
     function validate(units, id, stock) {
-        if (parseInt(units) <= stock) {
-            if (units != 0) {
+        console.log(units + ' ' + stock);
+        if (parseInt(units) <= parseInt(stock)) {
+            if (parseInt(units) != 0) {
                 for (let count = 0; count < list_Product.length; count++) {
                     const element = list_Product[count];
                     if (element == id) {

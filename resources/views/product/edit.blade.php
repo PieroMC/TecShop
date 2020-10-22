@@ -11,10 +11,10 @@
         <li class="breadcrumb-item"><a href="#">Home</a></li>
     </ul>
 </div>
-<div class="row">
-    <div class="col-6">
+<div class="row d-flex justify-content-center">
+    <div class="col-8">
         <div class="tile">
-            <h3 class="tile-title">Register Product</h3>
+            <h3 class="tile-title">Edit Product</h3>
             <div class="tile-body">
                 <form class="form-horizontal" method="POST" action="{{ route('product.update', $product) }}">
                     @csrf
@@ -82,7 +82,7 @@
                             <div class="col-md-8 col-md-offset-3">
                                 <button class="btn btn-success" type="submit">
                                     <i class="fa fa-fw fa-lg fa-check-circle"></i>{{__('Update')}}</button>&nbsp;&nbsp;&nbsp;<a
-                                    class="btn btn-danger" href="#"><i
+                                    class="btn btn-danger" href="/products"><i
                                         class="fa fa-fw fa-lg fa-times-circle"></i>{{__('Cancel')}}</a>
                             </div>
                         </div>
